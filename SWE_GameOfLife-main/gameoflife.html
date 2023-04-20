@@ -1,0 +1,43 @@
+<head>
+    <meta charset = "UTF-8" />
+    <title>The Game of Life</title>
+    <link rel="stylesheet" href="gameoflife.css">    
+</head>
+<body>
+
+    <script>
+        // Get the username from the query parameter
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var username = urlParams.get('username');
+        
+        // Display the username at the top of the page
+        var usernameElement = document.createElement('div');
+        usernameElement.textContent = 'Welcome, ' + username + '!';
+        document.body.insertBefore(usernameElement, document.body.firstChild);
+    </script>
+        
+
+<img src="img/gameoflifebackground-removebg-preview.png">
+<div id="gridContainer">
+    
+</div>
+
+<div class="controls">
+<button id="start"><span>Start</span></button>
+<button id ="stop">Stop</button>
+<button id="clear"><span>Clear</span></button>
+<button id="random"><span>Random</span></button>
+<button id="iter23"><span>23 Iterations</span></button>
+<button id="sinIteration"><span>Single Iteration</span></button>
+</div>
+
+<div>
+    <label><input type="radio" name="speed" value="Fast" checked="checked">Fast</label>
+    <label><input type="radio" name="speed" value="Medium"> Medium</label>
+    <label><input type="radio" name="speed" value="Slow"> Slow</label>
+</div>
+    
+<script src="gameoflife.js"></script>
+    
+</body>
