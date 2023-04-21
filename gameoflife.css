@@ -6,8 +6,7 @@ body
 }
 
 h1 
-{
-    
+{    
     font-size: 40px;
     font-weight: 600;
     color: green;
@@ -20,14 +19,11 @@ h1
 #gridContainer 
 {
      padding-bottom: 10px; 
-     /* border:solid;  */
-
 }
 
 table 
 {
     background-color: #246280;
-    /* border-spacing: 0; */
     border:solid;
 }
 
@@ -64,8 +60,6 @@ span
     padding: 7px 20px;
     text-align: center;
     text-decoration: none;
-
-
 }
 
 button:hover 

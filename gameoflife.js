@@ -4,12 +4,9 @@ let grid = new Array(numRows);
 for (let i = 0; i < numRows; i++) {
   grid[i] = new Array(numCols);
 }
-function createTable(){
+function createTable()
+{
   var gridContainer= document.getElementById('gridContainer');
-  if (!gridContainer) {
-    // Throw error
-    console.error("Problem: No div for the drid table!");
-  }
   var table = document.createElement("table")
 
   for (var i=0;i<numRows;i++){
@@ -25,11 +22,11 @@ function createTable(){
     table.appendChild(tr);
   }
   gridContainer.appendChild(table);
-  }
+}
 
 
-  function ClickCell(){
-
+  function ClickCell()
+  {
     var position = this.id.split(".");
     var row = position[0];
     var col = position[1];
@@ -42,28 +39,29 @@ function createTable(){
             grid[row][col] = 1;
         }
   }
+
 // Populate the grid with random cells 
-function random(){
-for (let i = 0; i < numRows; i++) {
-  for (let j = 0; j < numCols; j++) {
-    grid[i][j] = Math.floor(Math.random() * 2);
-    var cell = document.getElementById(i + "." + j);
+function random() 
+{
+  for (let i = 0; i < numRows; i++) {
+    for (let j = 0; j < numCols; j++) {
+      grid[i][j] = Math.floor(Math.random() * 2);
+      var cell = document.getElementById(i + "." + j);
       if (grid[i][j] === 1) {
-        cell.setAttribute("class","live")
-
-      } 
-      else {
-        cell.setAttribute("class","dead")
+        cell.setAttribute("class", "live")
       }
-
+      else {
+        cell.setAttribute("class", "dead")
+      }
+    }
   }
-}
   gridContainer.appendChild(cell);
 }
 
 
 // Function to get the number of live neighbors for a cell
-function getNumLiveNeighbors(row, col) {
+function getNumLiveNeighbors(row, col) 
+{
   let numLiveNeighbors = 0;
 
   // Check the eight neighbors around the cell
@@ -133,26 +131,15 @@ function updateGrid()
     for (let j = 0; j < numCols; j++) {
       var cell = document.getElementById(i + "." + j);
       if (newGrid[i][j] === 1) {
-        cell.setAttribute("class","live")
-      
+        cell.setAttribute("class","live")      
       } else {
-        cell.setAttribute("class","dead")
-        
-      
+        cell.setAttribute("class","dead")     
       }
     }
   }
 
   grid = newGrid; // Update the grid array
   
-}
-
-
-function initialize() {
-  createTable();
-  
-  
-
 }
 
 //clear function
@@ -184,21 +171,13 @@ function ClearBoard()
       if (speed === "Fast") {
         intervalId = setInterval(updateGrid, 200); // set interval for 200 milliseconds
       } else if (speed === "Medium") {
-        intervalId = setInterval(updateGrid, 500); // set interval for 500 milliseconds
+        intervalId = setInterval(updateGrid, 500); 
       } else if (speed === "Slow") {
-        intervalId = setInterval(updateGrid, 1000); // set interval for 1000 milliseconds
+        intervalId = setInterval(updateGrid, 1000); 
       }
     });
   });
 
-  // function start() 
-  // {
-  //   if (!playing){
-  //     playing = true;
-  //     // intervalld = setInterval(updateGrid, 500);
-  //   }
-  // }
-  
   function start() 
   {
     if (!playing) 
@@ -208,32 +187,28 @@ function ClearBoard()
       if (speed === "Fast") {
         intervalId = setInterval(updateGrid, 200); // set interval for 200 milliseconds
       } else if (speed === "Medium") {
-        intervalId = setInterval(updateGrid, 500); // set interval for 500 milliseconds
+        intervalId = setInterval(updateGrid, 500); 
       } else if (speed === "Slow") {
-        intervalId = setInterval(updateGrid, 1000); // set interval for 1000 milliseconds
+        intervalId = setInterval(updateGrid, 1000); 
       }
     }
   }
 
-
   function stop() 
   {
-    // if (playing) 
-    // {
-    //   playing = false;
-      
-    // }
+    if (playing) 
+    {
+      playing = false;     
+    }
     clearInterval(intervalId);
   }
-
 
   function iter23(){
    
     for(i =0;i<23;i++){
         setTimeout(updateGrid,500);
       console.log(i);
-    }
-    
+    }    
     return;
   }
 
@@ -247,33 +222,10 @@ var clearButton = document.getElementById("clear");
 clearButton.addEventListener("click", ClearBoard);
 var stopButton = document.getElementById("stop");
 stopButton.addEventListener("click", stop);
-window.onload= initialize();
+window.onload= createTable();
 var playing = false;
 
 var startButton = document.getElementById("start");
 startButton.addEventListener("click", start);
 var rand = document.getElementById("random");
 rand.addEventListener("click", random);
-
-// function displayGrid() {
-//   const gridContainer = document.getElementById("gridContainer"); // Replace "grid-container" with the ID of the container element for your grid in your HTML
-//     gridContainer.innerHTML = ""; // Clear the existing content of the grid container
-
-//   // Loop through the grid array and create HTML elements for each cell
-//   for (let i = 0; i < numRows; i++) {
-//     for (let j = 0; j < numCols; j++) {
-//       const cell = document.createElement("div"); // Create a new element for each cell
-//       cell.classList.add("cell"); // Add a CSS class for styling
-
-//       // Set the cell's class based on the live/dead status in the grid array
-//       if (grid[i][j] === 1) {
-//         cell.classList.add("live"); // Add a CSS class for live cells
-//       } else {
-//         cell.classList.add("dead"); // Add a CSS class for dead cells
-//       }
-
-//       // Add the cell element to the grid container
-//       gridContainer.appendChild(cell);
-//     }
-//   }
-// }
