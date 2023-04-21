@@ -58,7 +58,7 @@ for (let i = 0; i < numRows; i++) {
 
   }
 }
-  gridContainer.appendChild(cell);
+
 }
 
 
